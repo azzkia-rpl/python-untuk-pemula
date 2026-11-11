@@ -485,3 +485,14 @@ class Cat:
 cat1 = Cat()
 # Memanggil method di dalam Class
 cat1.say()
+
+
+
+
+
+
+# PIP dan Virtual Environments
+# Library "requests" dipasang dengan pip di dalam virtual environment
+import requests
+
+print(requests.__version__)
