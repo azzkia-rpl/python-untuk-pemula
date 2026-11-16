@@ -312,3 +312,43 @@ print("Sekolah:", Siswa.sekolah)
 # Mengubah nilai atribut
 siswa1.kelas = "XII RPL"
 siswa1.perkenalan()
+
+
+
+
+
+
+# Bab 12: Encapsulation
+# Encapsulation: membatasi akses langsung ke data di dalam class
+class Rekening:
+    def __init__(self, pemilik, saldo):
+        self.pemilik = pemilik      # public
+        self._cabang = "Subang"     # protected (konvensi: satu underscore)
+        self.__saldo = saldo        # private (dua underscore)
+
+    # Getter: membaca atribut private
+    def get_saldo(self):
+        return self.__saldo
+
+    # Setter/method dengan validasi
+    def setor(self, jumlah):
+        if jumlah > 0:
+            self.__saldo += jumlah
+        else:
+            print("Jumlah setoran harus lebih dari 0")
+
+    def tarik(self, jumlah):
+        if jumlah <= self.__saldo:
+            self.__saldo -= jumlah
+        else:
+            print("Saldo tidak cukup")
+
+akun = Rekening("Budi", 100000)
+print(akun.pemilik)
+print("Saldo awal:", akun.get_saldo())
+akun.setor(50000)
+akun.tarik(30000)
+print("Saldo akhir:", akun.get_saldo())
+akun.tarik(1000000)
+
+# Atribut private tidak bisa diakses
